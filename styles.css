@@ -21,7 +21,11 @@ body {
 	box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 	text-align: center;
 }
-
+.button-group {
+	display: flex;
+	flex-direction: column;
+	gap: 10px; /* controls vertical spacing */
+}
 input {
 	width: 100%;
 	padding: 10px;
