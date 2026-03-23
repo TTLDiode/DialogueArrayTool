@@ -56,3 +56,33 @@ function downloadJSON() {
 
 	URL.revokeObjectURL(url);
 }
+function undoLast() {
+	if (dialogue.length === 0) return;
+
+	// Remove last dialogue entry
+	dialogue.pop();
+
+	// Remove most recent visual line
+	if (historyLines.length > 0) {
+		const line = historyLines.shift();
+
+		line.style.opacity = "0";
+		line.style.transform = "translateY(20px)";
+
+		setTimeout(() => line.remove(), 200);
+	}
+
+	updatePositions();
+}
+function clearAll() {
+	dialogue = [];
+
+	// Remove all visual lines
+	historyLines.forEach(line => {
+		line.style.opacity = "0";
+		line.style.transform = "translateY(-50px)";
+		setTimeout(() => line.remove(), 200);
+	});
+
+	historyLines = [];
+}
